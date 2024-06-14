@@ -3,7 +3,7 @@ import { Program } from '@metaplex-foundation/mpl-core';
 import { Stamp } from './accounts';
 
 export class StampProgram extends Program {
-  static readonly PUBKEY = new PublicKey('cardFRMHxFN4X1urijmqb7gWSMT7bAep4Pd4LuLciG3');
+  static readonly PUBKEY = new PublicKey('G8azYVro1VexvpWMuQzcQyPJxVgAWYp6pyAWQGJvVKHM');
 
   static async findStampAccount(reference: PublicKey): Promise<[PublicKey, number]> {
     return PublicKey.findProgramAddress(

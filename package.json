@@ -27,7 +27,7 @@
     ],
     "homepage": "https://gotok.app",
     "repository": "https://github.com/GotokHQ/card.git",
-    "author": "PassBook Maintainers <contact@gotok.app>",
+    "author": "Stamp Maintainers <contact@gotok.app>",
     "license": "MIT",
     "dependencies": {
         "@metaplex-foundation/mpl-core": "^0.0.2",

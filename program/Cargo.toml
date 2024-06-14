@@ -1,5 +1,5 @@
 [package]
-name = "card"
+name = "stamp"
 version = "0.1.0"
 edition = "2018"
 license = "WTFPL"
@@ -10,9 +10,8 @@ no-entrypoint = []
 test-bpf = []
 
 [dependencies]
-solana-program = "~1.17.1"
+solana-program = "~1.18.16"
 thiserror = "~1.0.49"  
-borsh = "0.10"
-spl-token = { version="~4.0.0", features = [ "no-entrypoint" ] }
+borsh = "1.5.1"
 [lib]
 crate-type = ["cdylib", "lib"]

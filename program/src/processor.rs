@@ -12,9 +12,8 @@ impl Processor {
         accounts: &[AccountInfo],
         instruction_data: &[u8],
     ) -> ProgramResult {
-        msg!("Start deserialize card instruction");
         let instruction = StampInstruction::try_from_slice(instruction_data)?;
-        msg!("Successfully deserialized card instruction");
+        msg!("Successfully deserialized stamp instruction");
 
         match instruction {
             StampInstruction::InitStamp(args) => {
