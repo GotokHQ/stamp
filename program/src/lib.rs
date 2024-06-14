@@ -10,4 +10,4 @@ pub mod entrypoint;
 use solana_program::declare_id;
 
 
-declare_id!("G8azYVro1VexvpWMuQzcQyPJxVgAWYp6pyAWQGJvVKHM");
+declare_id!("DkhsdcwKejLofq1VhehWdfua6gZweAvvog8RaMPxwbt");
