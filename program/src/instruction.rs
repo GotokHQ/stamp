@@ -14,6 +14,7 @@ use solana_program::{
 /// Initialize a funding params
 pub struct StampArgs {
     pub bump: u8,
+    pub reference: String,
 }
 
 
@@ -22,29 +23,23 @@ pub struct StampArgs {
 pub enum StampInstruction {
     /// Accounts expected:
     ///
-    /// 0. `[signer]` The authority responsible for approving due to some external conditions
-    /// 2. `[signer]` The fee payer
-    /// 3. `[writable]` The stamp account, it will hold all necessary info about the transaction.
-    /// 4. `[]` The stamp reference
-    /// 5. `[]` The rent sysvar
-    /// 6. `[]` The token program
+    /// 0. `[signer]` The fee payer
+    /// 1. `[writable]` The stamp account, it will hold all necessary info about the transaction.
+    /// 2. `[]` The rent sysvar
+    /// 3. `[]` The token program
     InitStamp(StampArgs),
 }
 
 /// Create `Stamp` instruction
 pub fn stamp(
     program_id: &Pubkey,
-    authority: &Pubkey,
     payer: &Pubkey,
     stamp: &Pubkey,
-    reference: &Pubkey,
     args: StampArgs,
 ) -> Instruction {
     let accounts = vec![
-        AccountMeta::new_readonly(*authority, true),
         AccountMeta::new(*payer, true),
         AccountMeta::new(*stamp, false),
-        AccountMeta::new_readonly(*reference, false),
         AccountMeta::new_readonly(sysvar::rent::id(), false),
         AccountMeta::new_readonly(system_program::id(), false),
     ];

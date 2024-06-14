@@ -16,14 +16,10 @@ use solana_program::{
 /// Process InitPass instruction
 pub fn init(program_id: &Pubkey, accounts: &[AccountInfo], args: StampArgs) -> ProgramResult {
     let account_info_iter = &mut accounts.iter();
-    let authority_info = next_account_info(account_info_iter)?;
     let payer_info = next_account_info(account_info_iter)?;
     let stamp_info = next_account_info(account_info_iter)?;
-    let reference_info = next_account_info(account_info_iter)?;
     let rent_info = next_account_info(account_info_iter)?;
     let system_account_info = next_account_info(account_info_iter)?;
-
-    assert_signer(authority_info)?;
 
     if stamp_info.lamports() > 0 && !stamp_info.data_is_empty() {
         return Err(ProgramError::AccountAlreadyInitialized);
@@ -37,7 +33,9 @@ pub fn init(program_id: &Pubkey, accounts: &[AccountInfo], args: StampArgs) -> P
         FLAG_ACCOUNT_SIZE,
         &[
             Stamp::PREFIX.as_bytes(),
-            reference_info.key.as_ref(),
+            &bs58::decode(args.reference)
+            .into_vec()
+            .map_err(|_| ProgramError::InvalidArgument)?,
             &[args.bump],
         ],
     )?;
