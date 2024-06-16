@@ -31,7 +31,7 @@
     "license": "MIT",
     "dependencies": {
         "@metaplex-foundation/mpl-core": "^0.0.2",
-        "@solana/web3.js": "^1.54.0",
+        "@solana/web3.js": "^1.93.0",
         "bs58": "^5.0.0"
     },
     "devDependencies": {
